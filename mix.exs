@@ -7,7 +7,15 @@ defmodule XmlToKeyword.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     package: [
+     licenses: ["Free licenses"],
+       maintainers: ["Zaali Kavelashvili", "zaali@live.com"]
+     ],
+     description: """
+       This is an Elixir package that can convert xml into Elixir's Keyword List, which is compilable with XmlBuilder (joshnuss/xml_builder) package
+       """
+   ]
   end
 
   # Configuration for the OTP application

@@ -1,6 +1,7 @@
 # XmlToKeyword
 
 **TODO: Add description**
+This package converts Xml to Keyword list as XmlBuilder package requires
 
 ## Installation
 

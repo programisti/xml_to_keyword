@@ -4,9 +4,8 @@ defmodule XmlToKeyword do
   Record.defrecord :xmlElement, Record.extract(:xmlElement, from_lib: "xmerl/include/xmerl.hrl")
   Record.defrecord :xmlText,    Record.extract(:xmlText, from_lib: "xmerl/include/xmerl.hrl")
   Record.defrecord :xmlAttribute, Record.extract(:xmlAttribute, from_lib: "xmerl/include/xmerl.hrl")
-  defp get_root_name(doc), do: doc |> xmlElement(:name)
-  defp get_root_path(doc), do: '//#{get_root_name(doc)}'
-  def run(xml) do
+
+  def convert(xml) do
     {doc, _} = xml |> :binary.bin_to_list |> :xmerl_scan.string
     [elements] = doc
     |> get_root_path
@@ -16,9 +15,7 @@ defmodule XmlToKeyword do
     [{get_root_name(doc), elements}]
   end
 
-  defp extract_attr([xmlAttribute(value: value)]), do: List.to_string(value)
-
-  def parse(node) do
+  defp parse(node) do
     cond do
       Record.is_record(node, :xmlElement) ->
         name    = xmlElement(node, :name)
@@ -51,4 +48,7 @@ defmodule XmlToKeyword do
       true -> "Not supported to parse #{inspect node}"
     end
   end
+
+  defp get_root_name(doc), do: doc |> xmlElement(:name)
+  defp get_root_path(doc), do: '//#{get_root_name(doc)}'
 end

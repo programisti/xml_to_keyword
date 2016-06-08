@@ -45,7 +45,7 @@ defmodule XmlToKeyword do
               end
             end)
         end
-      true -> "Not supported to parse #{inspect node}"
+      true -> IO.inspect "Error in XmlToKeyword not supported"
     end
   end
 

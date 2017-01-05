@@ -10,7 +10,8 @@ defmodule XmlToKeyword.Mixfile do
      deps: deps,
      package: [
      licenses: ["Free licenses"],
-       maintainers: ["Zaali Kavelashvili", "zaali@live.com"]
+       maintainers: ["Zaali Kavelashvili", "zaali@live.com"],
+       links: %{"Github" => "https://github.com/programisti/xml_to_keyword"}
      ],
      description: """
        This is an Elixir package that can convert xml into Elixir's Keyword List, which is compilable with XmlBuilder (joshnuss/xml_builder) package

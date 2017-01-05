@@ -24,7 +24,6 @@ defmodule XmlToKeyword do
           [] ->
             [{name, parse(content)}]
           attrs ->
-            IO.inspect attrs |> parse_attrs |> Map.new
             [{name, attrs |> parse_attrs |> Map.new, parse(content) }]
         end
 

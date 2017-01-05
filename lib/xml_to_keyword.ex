@@ -21,14 +21,11 @@ defmodule XmlToKeyword do
         name    = xmlElement(node, :name)
         content = xmlElement(node, :content)
         case xmlElement(node, :attributes) do
-          [] -> 
+          [] ->
             [{name, parse(content)}]
-          attrs -> 
-            Enum.map(attrs, fn(attr) ->
-              attr_name = xmlAttribute(attr, :name)
-              attr_val = xmlAttribute(attr, :value)
-              [{name, Map.put(%{}, attr_name, attr_val), parse(content) }]
-            end)
+          attrs ->
+            IO.inspect attrs |> parse_attrs |> Map.new
+            [{name, attrs |> parse_attrs |> Map.new, parse(content) }]
         end
 
       Record.is_record(node, :xmlText) ->
@@ -53,4 +50,9 @@ defmodule XmlToKeyword do
 
   defp get_root_name(doc), do: doc |> xmlElement(:name)
   defp get_root_path(doc), do: '//#{get_root_name(doc)}'
+  defp parse_attrs(attrs) do
+    Enum.map(attrs, fn(attr) ->
+      { xmlAttribute(attr, :name), xmlAttribute(attr, :value) }
+    end)
+  end
 end

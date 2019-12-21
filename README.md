@@ -1,7 +1,7 @@
 # XmlToKeyword
 
-**TODO: Add description**
-This package converts Xml to Keyword list as XmlBuilder package requires
+
+'XmlToKeyword' converts plain Xml to Keyword list structure as 'XmlBuilder' package requires
 
 ## Installation
 
@@ -12,10 +12,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def deps do
           [{:xml_to_keyword, "~> 0.0.1"}]
         end
-
-  2. Ensure xml_to_keyword is started before your application:
-
-        def application do
-          [applications: [:xml_to_keyword]]
-        end
-
